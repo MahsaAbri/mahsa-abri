@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Your original artwork — the masters, ~900 MB. Keep these backed up somewhere
+# else (a drive, Dropbox); they're far too big for version control. The
+# optimised copies in public/media/ ARE committed, so the site builds without
+# them. You only need this folder to re-run `npm run media`.
+/artwork-source
