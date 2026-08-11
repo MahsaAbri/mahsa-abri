@@ -8,10 +8,10 @@ import { useState } from "react";
 import { site } from "@/content/site";
 
 const NAV = [
-  { label: "Work", href: "/reel-warm" },
-  { label: "Journal", href: "/reel-warm/blog" },
-  { label: "About", href: "/reel-warm/about" },
-  { label: "Contact", href: "/reel-warm/contact" },
+  { label: "Work", href: "/" },
+  { label: "Journal", href: "/blog" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Header() {
@@ -26,15 +26,15 @@ export function Header() {
   }
 
   const isActive = (href: string) =>
-    href === "/reel-warm"
-      ? pathname === "/reel-warm" || pathname.startsWith("/reel-warm/work")
+    href === "/"
+      ? pathname === "/" || pathname.startsWith("/work")
       : pathname.startsWith(href);
 
   return (
     <>
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
         <div className="pointer-events-auto flex items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
-          <Link href="/reel-warm" className="group flex items-baseline gap-3">
+          <Link href="/" className="group flex items-baseline gap-3">
             <span className="text-[15px] font-medium tracking-[-0.02em] text-[#2a251f]">
               {site.name}
             </span>

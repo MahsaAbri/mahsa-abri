@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 
+import { Header } from "@/components/reel-warm/Header";
 import { site } from "@/content/site";
 
 import "./globals.css";
@@ -70,7 +71,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${inter.variable} ${barlowCondensed.variable} ${fraunces.variable} ${jetbrains.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <div
+          className="grain paper-texture min-h-screen bg-[#f4efe6] text-[#3f3930] selection:bg-[#b4472e] selection:text-[#f4efe6]"
+          style={
+            {
+              "--prose-fg": "#3f3930",
+              "--prose-muted": "#8a7f70",
+              "--prose-accent": "#2a251f",
+              "--prose-rule": "rgb(180 71 46 / 0.35)",
+              "--prose-heading-font": "var(--font-sans), sans-serif",
+            } as React.CSSProperties
+          }
+        >
+          <Header />
+          <main>{children}</main>
+        </div>
+      </body>
     </html>
   );
 }

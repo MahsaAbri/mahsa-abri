@@ -1,16 +1,7 @@
 # Mahsa Abri — Portfolio
 
-Four complete designs for the same portfolio. They all read from the same
-artwork and the same words, so the work only needs adding once.
-
-| Version       | URL          | Feel                                                                                              |
-| ------------- | ------------ | ------------------------------------------------------------------------------------------------- |
-| **Gallery**   | `/classic`   | White and quiet, close to the reference site. Hovering a piece fades it out and leaves its title. |
-| **Reel**      | `/reel`      | Cinematic. A dark room and a sideways gallery.                                                    |
-| **Reel Warm** | `/reel-warm` | The Reel layout in Atelier's warm paper and terracotta. Every picture whole — nothing cropped, nothing written over the art. |
-| **Atelier**   | `/atelier`   | Warm and printed. Work pinned to a studio wall.                                                   |
-
-Open `/` to compare them.
+The Reel Warm design: a sideways gallery in warm paper, ink and terracotta.
+Every picture is shown whole — nothing cropped, nothing written over the art.
 
 ---
 
@@ -51,7 +42,7 @@ Then:
 npm run media
 ```
 
-That's it — the project appears in every version. The command shrinks every
+That's it — the project appears on the site. The command shrinks every
 picture to a sensible size for the web, measures it so pages don't jump about
 while loading, and makes the soft blur that shows while an image arrives. Your
 originals are never touched.
@@ -102,9 +93,8 @@ Three files, all commented:
 | `work.ts`  | Project titles, their order, optional one-line notes |
 | `posts.ts` | Blog posts                                          |
 
-⚠️ **The About text and the three blog posts are placeholder writing** — they're
-there so the pages aren't empty while the design is being chosen. Replace them
-with your own before the site goes live. They're marked in the files.
+⚠️ **The About text and the three blog posts are placeholder writing** — replace
+them with your own before the site goes live. They're marked in the files.
 
 ### Writing a blog post
 
@@ -148,20 +138,6 @@ it from a blog post.
   These _are_ committed.
 - `src/content/work.generated.json` — written by `npm run media`. Don't edit it
   by hand.
-
----
-
-## Choosing one version
-
-Once a design is picked the rest are deleted and nothing else changes:
-
-1. Move the contents of `src/app/<chosen>/` up into `src/app/`, replacing the
-   chooser page at `src/app/page.tsx`.
-2. Delete the other version folders in `src/app/` and `src/components/`, and
-   `src/components/VersionSwitch.tsx` (plus the line using it in the layout).
-3. Change that version's internal links from `/classic/…` to `/…`.
-
-Ask me and I'll do it — it's a few minutes of mechanical work.
 
 ---
 

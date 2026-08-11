@@ -78,7 +78,7 @@ function Reel({ projects }: { projects: Work[] }) {
           {projects.map((project, i) => (
             <Link
               key={project.slug}
-              href={`/reel-warm/work/${project.slug}`}
+              href={`/work/${project.slug}`}
               className="group block shrink-0"
               style={{ width: `${FRAME_VH * mediaInfo(project.poster).aspect}vh` }}
             >
@@ -140,7 +140,7 @@ function EndCard() {
   return (
     <div className="flex w-[24vw] shrink-0 flex-col justify-center" style={{ height: `${FRAME_VH}vh` }}>
       <Link
-        href="/reel-warm/contact"
+        href="/contact"
         className="group inline-block text-[clamp(1.8rem,2.6vw,2.6rem)] font-semibold leading-tight tracking-[-0.035em] text-[#2a251f]"
       >
         Get in touch
@@ -170,7 +170,7 @@ function Stack({ projects }: { projects: Work[] }) {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Link href={`/reel-warm/work/${project.slug}`} className="group block">
+            <Link href={`/work/${project.slug}`} className="group block">
               <div className="overflow-hidden">
                 <Media media={project.poster} sizes="100vw" priority={i === 0} className="w-full" />
               </div>

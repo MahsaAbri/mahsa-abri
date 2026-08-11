@@ -79,7 +79,7 @@ export function ReelWarmProject({ project, next }: { project: Work; next: Work }
 
       {/* Next */}
       <div className="border-t border-[#2a251f]/12 px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <Link href={`/reel-warm/work/${next.slug}`} className="group block">
+        <Link href={`/work/${next.slug}`} className="group block">
           <div className="mx-auto" style={{ width: frameWidth(next.poster, 45) }}>
             <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#b4472e]">
               Next

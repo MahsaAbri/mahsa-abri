@@ -15,7 +15,7 @@ export default function ReelWarmBlogPage() {
       <ul className="mt-16">
         {orderedPosts.map((post) => (
           <li key={post.slug} className="border-t border-[#2a251f]/12">
-            <Link href={`/reel-warm/blog/${post.slug}`} className="group block py-8 lg:py-10">
+            <Link href={`/blog/${post.slug}`} className="group block py-8 lg:py-10">
               <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_20rem] lg:items-center lg:gap-10">
                 <div className="min-w-0">
                   <h2 className="text-[clamp(1.4rem,3vw,2.2rem)] font-medium leading-tight tracking-[-0.03em] text-[#3f3930] transition-colors duration-500 group-hover:text-[#2a251f]">
