@@ -8,11 +8,11 @@ import { useState } from "react";
 import { versions, type VersionKey } from "@/lib/versions";
 
 /**
- * A small floating control for flipping between the three designs while
+ * A small floating control for flipping between the designs while
  * reviewing. It keeps you on the same page — /classic/about becomes
  * /atelier/about — so the versions are easy to compare like for like.
  *
- * Delete this component (and its use in the three layouts) once a design is
+ * Delete this component (and its use in each layout) once a design is
  * chosen. It is not part of any of them.
  */
 export function VersionSwitch({ current }: { current: VersionKey }) {
@@ -66,7 +66,7 @@ export function VersionSwitch({ current }: { current: VersionKey }) {
                 href="/"
                 className="text-[11px] text-neutral-500 underline-offset-2 hover:text-neutral-900 hover:underline"
               >
-                Compare all three
+                Compare them all
               </Link>
               <button
                 onClick={() => setHidden(true)}

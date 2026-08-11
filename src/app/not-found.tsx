@@ -12,7 +12,7 @@ export default function NotFound() {
         There&apos;s nothing drawn here yet.
       </h1>
       <p className="mt-4 max-w-md text-[16px] leading-relaxed text-neutral-500">
-        That page doesn&apos;t exist. Try one of the three versions of the site instead.
+        That page doesn&apos;t exist. Try one of the versions of the site instead.
       </p>
 
       <nav className="mt-9 flex flex-wrap items-center justify-center gap-3">

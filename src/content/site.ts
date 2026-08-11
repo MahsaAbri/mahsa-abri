@@ -24,8 +24,8 @@ export const site = {
   about: {
     /** The picture on the About page. Any image from `public/media/`. */
     portrait: {
-      src: "/media/concept-art/environment-copy2.jpg",
-      alt: "Environment concept painting",
+      src: "/media/about/portrait.jpg",
+      alt: "Mahsa Abri",
     },
     /**
      * ⚠️ PLACEHOLDER — replace this with your own words.

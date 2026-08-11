@@ -30,6 +30,13 @@
  *
  * Images already processed are skipped, so re-running after adding one new
  * picture takes a second. Use `npm run media -- --force` to redo everything.
+ *
+ * ── FOLDERS WITHOUT A POSTER ─────────────────────────────────────────────────
+ *
+ * A folder with no matching poster isn't treated as a project — it won't show
+ * up as work on the landing page. Its pictures are still optimised, though, so
+ * you can point to one by hand from `site.ts` (the About picture) or `posts.ts`
+ * (a blog cover) — see `src/content/assets.generated.json` for their addresses.
  */
 
 import { existsSync } from "node:fs";
@@ -41,6 +48,7 @@ import sharp from "sharp";
 const root = path.resolve(import.meta.dirname, "..");
 const outDir = path.join(root, "public", "media");
 const dataFile = path.join(root, "src", "content", "work.generated.json");
+const assetsFile = path.join(root, "src", "content", "assets.generated.json");
 const cacheFile = path.join(root, "node_modules", ".cache", "artwork-import.json");
 const force = process.argv.includes("--force");
 
@@ -150,32 +158,74 @@ async function optimise(sourcePath, destRelative) {
   return record;
 }
 
+/**
+ * Optimises every picture in a folder under `public/media/<slug>/`, giving
+ * each a short, unique name. `taken` reserves names that already mean
+ * something else in this folder (the poster, chiefly), so a picture inside
+ * can never overwrite it.
+ */
+async function optimiseFolder(dir, names, slug, taken = new Set()) {
+  const used = new Set(taken);
+  const produced = new Set([...taken].map((name) => `${name}.jpg`));
+  const images = [];
+  for (const name of names) {
+    const base = path.parse(name).name;
+    let stemOut = slugify(base) || `image-${shortHash(base)}`;
+    if (used.has(stemOut)) stemOut = `${stemOut}-${shortHash(name)}`;
+    used.add(stemOut);
+    produced.add(`${stemOut}.jpg`);
+
+    images.push(await optimise(path.join(dir, name), path.join(slug, `${stemOut}.jpg`)));
+  }
+  return { images, produced };
+}
+
 const entries = await readdir(sourceDir, { withFileTypes: true });
 const folders = entries.filter((e) => e.isDirectory()).sort((a, b) => naturally(a.name, b.name));
 const files = entries.filter((e) => e.isFile());
 
 const projects = [];
+const assets = {};
 const warnings = [];
+const notes = [];
+/** slug → the filenames this run wrote, so anything else can be swept away. */
+const producedBySlug = new Map();
 
 for (const folder of folders) {
   const slug = slugify(folder.name);
   const stem = posterStem(folder.name);
 
   const posterFile = files.find((f) => IMAGE.test(f.name) && path.parse(f.name).name === stem);
-  if (!posterFile) {
-    warnings.push(
-      `"${folder.name}" has no poster — add a file called "${stem}.jpg" next to the folder, or the project is skipped.`
-    );
-    continue;
-  }
 
   const contents = (await readdir(path.join(sourceDir, folder.name), { withFileTypes: true }))
     .filter((f) => f.isFile() && IMAGE.test(f.name))
     .map((f) => f.name)
+    // A copy of the landing-page picture kept inside the folder — call it
+    // "poster" or "nini_mina_poster" — isn't a second piece of work.
+    .filter((name) => {
+      const base = path.parse(name).name.toLowerCase();
+      return base !== "poster" && base !== stem;
+    })
     .sort(naturally);
 
   if (contents.length === 0) {
     warnings.push(`"${folder.name}" has no pictures inside it — skipped.`);
+    continue;
+  }
+
+  if (!posterFile) {
+    // No poster, so this isn't a project — just optimise what's here for use
+    // by hand elsewhere on the site.
+    const { images, produced } = await optimiseFolder(
+      path.join(sourceDir, folder.name),
+      contents,
+      slug
+    );
+    assets[slug] = images;
+    producedBySlug.set(slug, produced);
+    notes.push(
+      `"${folder.name}" has no poster, so it isn't a project — its ${images.length} picture(s) are ready to use directly (see assets.generated.json).`
+    );
     continue;
   }
 
@@ -188,39 +238,61 @@ for (const folder of folders) {
     );
   }
 
-  const used = new Set();
-  const images = [];
-  for (const name of contents) {
-    const base = path.parse(name).name;
-    let stemOut = slugify(base) || `image-${shortHash(base)}`;
-    if (used.has(stemOut)) stemOut = `${stemOut}-${shortHash(name)}`;
-    used.add(stemOut);
+  // "poster" is taken by the landing-page picture, so a file called
+  // "Poster.png" inside the folder can't be allowed to overwrite it.
+  const { images, produced } = await optimiseFolder(
+    path.join(sourceDir, folder.name),
+    contents,
+    slug,
+    new Set(["poster"])
+  );
 
-    images.push(await optimise(path.join(sourceDir, folder.name, name), path.join(slug, `${stemOut}.jpg`)));
-  }
-
+  producedBySlug.set(slug, produced);
   projects.push({ slug, folder: folder.name, poster, images });
 }
 
-// Drop optimised folders whose source project has gone away.
+// Drop optimised copies whose original has gone away — whole projects and
+// asset folders that were deleted, and single pictures removed from one that
+// stayed.
 if (existsSync(outDir)) {
-  const live = new Set(projects.map((p) => p.slug));
+  const live = new Set([...projects.map((p) => p.slug), ...Object.keys(assets)]);
+  let sweptFiles = 0;
+
   for (const stale of await readdir(outDir, { withFileTypes: true })) {
-    if (stale.isDirectory() && !live.has(stale.name)) {
+    if (!stale.isDirectory()) continue;
+
+    if (!live.has(stale.name)) {
       await rm(path.join(outDir, stale.name), { recursive: true, force: true });
       warnings.push(`Removed "public/media/${stale.name}" — no longer in ${path.basename(sourceDir)}.`);
+      continue;
     }
+
+    const keep = producedBySlug.get(stale.name);
+    const dir = path.join(outDir, stale.name);
+    for (const file of await readdir(dir, { withFileTypes: true })) {
+      if (!file.isFile() || !file.name.endsWith(".jpg") || keep.has(file.name)) continue;
+      await rm(path.join(dir, file.name), { force: true });
+      sweptFiles++;
+    }
+  }
+
+  if (sweptFiles > 0) {
+    warnings.push(`Removed ${sweptFiles} optimised picture(s) whose original is no longer in a project folder.`);
   }
 }
 
 await mkdir(path.dirname(dataFile), { recursive: true });
 await writeFile(dataFile, `${JSON.stringify(projects, null, 2)}\n`);
+await writeFile(assetsFile, `${JSON.stringify(assets, null, 2)}\n`);
 
 await mkdir(path.dirname(cacheFile), { recursive: true });
 await writeFile(cacheFile, JSON.stringify(nextCache));
 
 const total = projects.reduce((n, p) => n + p.images.length + 1, 0);
+const assetTotal = Object.values(assets).reduce((n, images) => n + images.length, 0);
 console.log(
-  `\n${projects.length} projects, ${total} images — ${converted} optimised, ${reused} unchanged.`
+  `\n${projects.length} projects, ${total} images — ${converted} optimised, ${reused} unchanged.` +
+    (assetTotal > 0 ? ` Plus ${assetTotal} picture(s) in non-project folders.` : "")
 );
+for (const note of notes) console.log(`  · ${note}`);
 for (const warning of warnings) console.log(`  ! ${warning}`);

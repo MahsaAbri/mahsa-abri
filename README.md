@@ -1,15 +1,16 @@
 # Mahsa Abri — Portfolio
 
-Three complete designs for the same portfolio. They all read from the same
+Four complete designs for the same portfolio. They all read from the same
 artwork and the same words, so the work only needs adding once.
 
-| Version     | URL        | Feel                                                                                             |
-| ----------- | ---------- | ------------------------------------------------------------------------------------------------ |
-| **Gallery** | `/classic` | White and quiet, close to the reference site. Hovering a piece fades it out and leaves its title. |
-| **Reel**    | `/reel`    | Cinematic. A dark room and a sideways gallery.                                                    |
-| **Atelier** | `/atelier` | Warm and printed. Work pinned to a studio wall.                                                   |
+| Version       | URL          | Feel                                                                                              |
+| ------------- | ------------ | ------------------------------------------------------------------------------------------------- |
+| **Gallery**   | `/classic`   | White and quiet, close to the reference site. Hovering a piece fades it out and leaves its title. |
+| **Reel**      | `/reel`      | Cinematic. A dark room and a sideways gallery.                                                    |
+| **Reel Warm** | `/reel-warm` | The Reel layout in Atelier's warm paper and terracotta. Every picture whole — nothing cropped, nothing written over the art. |
+| **Atelier**   | `/atelier`   | Warm and printed. Work pinned to a studio wall.                                                   |
 
-Open `/` to compare all three.
+Open `/` to compare them.
 
 ---
 
@@ -50,7 +51,7 @@ Then:
 npm run media
 ```
 
-That's it — the project appears in all three versions. The command shrinks every
+That's it — the project appears in every version. The command shrinks every
 picture to a sensible size for the web, measures it so pages don't jump about
 while loading, and makes the soft blur that shows while an image arrives. Your
 originals are never touched.
@@ -58,8 +59,27 @@ originals are never touched.
 It skips anything it has already done, so adding one picture takes a second.
 Use `npm run media -- --force` to redo the lot.
 
-**To reorder the pictures inside a project**, put numbers at the front of the
-filenames: `01-…`, `02-…`.
+### Changing the order of the pictures inside a project
+
+Pictures appear in **filename order**. To make that easy to control, number them
+once:
+
+```bash
+npm run number              # renames every picture to 01, 02, 03…
+npm run number -- Sketches  # or just one project
+npm run number -- --dry     # show what it would rename, change nothing
+```
+
+After that, moving a picture is just renaming it: make the one you want first
+`01.jpg`, or slot a new picture between 02 and 03 by calling it `02b.jpg`. Run
+`npm run number` again to tidy the numbers back up, then:
+
+```bash
+npm run media
+```
+
+The renaming happens to your originals in `artwork-source/`, never to anything
+else, and two pictures can never overwrite each other while it runs.
 
 **To rename a project or change the order on the landing page**, edit
 `src/content/work.ts` — it's short and commented.
@@ -133,11 +153,11 @@ it from a blog post.
 
 ## Choosing one version
 
-Once a design is picked the other two are deleted and nothing else changes:
+Once a design is picked the rest are deleted and nothing else changes:
 
 1. Move the contents of `src/app/<chosen>/` up into `src/app/`, replacing the
    chooser page at `src/app/page.tsx`.
-2. Delete the other two folders in `src/app/` and `src/components/`, and
+2. Delete the other version folders in `src/app/` and `src/components/`, and
    `src/components/VersionSwitch.tsx` (plus the line using it in the layout).
 3. Change that version's internal links from `/classic/…` to `/…`.
 

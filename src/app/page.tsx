@@ -7,7 +7,7 @@ import { versions } from "@/lib/versions";
 
 export const metadata = {
   title: `Choose a design — ${site.name}`,
-  description: "Three complete designs for the same portfolio. Pick one.",
+  description: "Four complete designs for the same portfolio. Pick one.",
 };
 
 /**
@@ -27,16 +27,17 @@ export default function ChooserPage() {
           {site.name} — portfolio
         </p>
         <h1 className="mt-5 max-w-3xl text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.05] tracking-[-0.035em]">
-          Three complete designs. Same work, same words.
+          Four complete designs. Same work, same words.
         </h1>
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-neutral-500">
           Every version below is a whole site — work, projects, journal, about and contact. They all
           read from the same content files, so choosing one is a matter of taste, not of rebuilding
-          anything. Open a few, then tell me which to keep.
+          anything. Open a few, then tell me which to keep. <strong className="font-medium text-neutral-700">Reel Warm</strong> is
+          the Reel layout in Atelier&apos;s colours.
         </p>
       </header>
 
-      <div className="mx-auto grid max-w-6xl gap-6 px-6 pb-20 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-6 px-6 pb-20 sm:grid-cols-2 xl:grid-cols-4">
         {versions.map((version) => (
           <Link
             key={version.key}
@@ -79,7 +80,7 @@ export default function ChooserPage() {
       <section className="border-t border-black/8 bg-white">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <h2 className="text-[13px] uppercase tracking-[0.2em] text-neutral-400">
-            The same work, in all three
+            The same work, in every version
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {samples.map((project) => (
@@ -100,7 +101,7 @@ export default function ChooserPage() {
             <code className="rounded bg-neutral-100 px-1.5 py-0.5 text-[13px]">artwork-source/</code> — add a
             folder and its <code className="rounded bg-neutral-100 px-1.5 py-0.5 text-[13px]">_poster</code>{" "}
             image, run <code className="rounded bg-neutral-100 px-1.5 py-0.5 text-[13px]">npm run media</code>,
-            and it appears in all three. See{" "}
+            and it appears in every version. See{" "}
             <code className="rounded bg-neutral-100 px-1.5 py-0.5 text-[13px]">README.md</code>.
           </p>
         </div>
@@ -129,6 +130,30 @@ function Preview({ versionKey }: { versionKey: string }) {
           <span className="flex h-14 items-center justify-center rounded-sm border border-neutral-200">
             <span className="h-1.5 w-16 rounded-full bg-neutral-400" />
           </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (versionKey === "reel-warm") {
+    return (
+      <div className="flex h-44 flex-col justify-between bg-[#f4efe6] px-6 py-5">
+        <div className="flex items-center justify-between">
+          <span className="h-1.5 w-16 rounded-full bg-[#2a251f]/70" />
+          <span className="flex gap-1.5">
+            {[0, 1, 2].map((i) => (
+              <span key={i} className="h-1 w-5 rounded-full bg-[#2a251f]/25" />
+            ))}
+          </span>
+        </div>
+        <div className="flex items-end gap-2.5">
+          <span className="h-20 w-8 shrink-0 rounded-sm bg-[#2a251f]/10" />
+          <span className="h-24 flex-1 rounded-sm bg-gradient-to-t from-[#b4472e]/40 to-[#2a251f]/12" />
+          <span className="h-24 w-16 shrink-0 rounded-sm bg-[#2a251f]/12" />
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="h-px w-8 bg-[#b4472e]" />
+          <span className="h-px flex-1 bg-[#2a251f]/15" />
         </div>
       </div>
     );

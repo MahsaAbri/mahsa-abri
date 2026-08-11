@@ -17,7 +17,7 @@ import type { Post } from "./types";
  *     ## A heading
  *     > A pulled-out quote
  *     - A bullet point
- *     ![description of the picture](/media/thesis/1.jpg)
+ *     ![description of the picture](/media/thesis/01.jpg)
  *     ---                                (a divider line)
  *
  *  Inside a paragraph: **bold**, *italic*, [link text](https://example.com).
@@ -31,8 +31,8 @@ export const posts: Post[] = [
     date: "2026-07-18",
     excerpt: "Why the first hour of a drawing should look nothing like the last one.",
     cover: {
-      src: "/media/concept-art/study-01-copy.jpg",
-      alt: "A loose study",
+      src: "/media/journal/01.jpg",
+      alt: "A lab group at a research showcase",
     },
     body: `Every piece I'm happy with started as something I wouldn't show anyone.
 
@@ -55,8 +55,8 @@ Only when one of them keeps pulling my eye back do I scale it up, and only then 
     date: "2026-05-02",
     excerpt: "Deciding where the light comes from before deciding what's in the frame.",
     cover: {
-      src: "/media/the-parrot-and-the-merchant/01.jpg",
-      alt: "An illustrated scene",
+      src: "/media/journal/02.jpg",
+      alt: "Presenting at a graduate research conference",
     },
     body: `I've stopped starting with objects. Where the light comes from, how strong it is and what colour it is decides nearly everything else — so it may as well be the first decision rather than the last.
 
@@ -66,7 +66,7 @@ Once the light is fixed, a lot of questions answer themselves. Where the eye goe
 
 Squint at it. If the thing you want people to look at isn't the brightest or the darkest shape in the frame, it isn't going to work, and no amount of detail will rescue it.
 
-![An environment painting](/media/concept-art/forest-copy.jpg)
+![An environment painting](/media/concept-art/03.jpg)
 
 The detail is the easy part. It's the last five percent, and it only ever helps a picture that already reads.`,
   },
@@ -76,6 +76,10 @@ The detail is the easy part. It's the last five percent, and it only ever helps 
     title: "Drawing from life, even when the work isn't",
     date: "2026-02-14",
     excerpt: "Invented worlds are built out of things you've actually looked at.",
+    cover: {
+      src: "/media/journal/03.jpg",
+      alt: "A painted portrait with a cracked frame",
+    },
     body: `Almost nothing I paint exists. That's exactly why I draw things that do.
 
 You can't invent convincingly from memory alone — you end up drawing the *idea* of a tree rather than a tree. Half an hour in front of a real one gives you the things you'd never have thought to make up: the way a branch thickens where it leaves the trunk, how much of it is dead, how little of it is symmetrical.

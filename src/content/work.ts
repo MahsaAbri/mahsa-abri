@@ -18,7 +18,9 @@ import type { Media, Work } from "./types";
  *    3. Run `npm run media`.
  *
  *  REORDER THE PICTURES INSIDE A PROJECT
- *    They appear in filename order, so put numbers at the front: `01-…`, `02-…`.
+ *    They appear in filename order. Run `npm run number` once and every picture
+ *    is renamed 01, 02, 03…; after that, moving one is just renaming it —
+ *    make it `01` to put it first, then run `npm run media` again.
  *
  *  This file is only for the words: what each project is called, the order they
  *  appear on the landing page, and an optional line of description.
@@ -38,6 +40,7 @@ const TITLES: Record<string, string> = {
   thesis: "Thesis",
   illustration: "Illustration",
   mural: "Mural",
+  sketches: "Sketches",
 };
 
 /**
@@ -61,6 +64,7 @@ const ORDER = [
   "thesis",
   "illustration",
   "mural",
+  "sketches",
 ];
 
 // ── nothing below here needs editing ────────────────────────────────────────

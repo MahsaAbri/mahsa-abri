@@ -1,3 +1,4 @@
+import assetsGenerated from "@/content/assets.generated.json";
 import generated from "@/content/work.generated.json";
 import type { Media } from "@/content/types";
 
@@ -5,14 +6,19 @@ import type { Media } from "@/content/types";
  * Every optimised picture, by path, with the measurements taken by
  * `npm run media`. Knowing an image's shape before it loads is what stops the
  * page jumping about, and the tiny blurred copy is what shows in the meantime.
+ *
+ * Pictures from project folders (`work.generated.json`) and from folders with
+ * no poster (`assets.generated.json` — the About picture, a blog cover…) are
+ * both included, so either kind can be measured the same way.
  */
-const measurements = new Map(
-  generated.flatMap((project) =>
-    [project.poster, ...project.images].map(
-      (image) => [image.src, image] as const
-    )
-  )
-);
+const measurements = new Map([
+  ...generated.flatMap((project) =>
+    [project.poster, ...project.images].map((image) => [image.src, image] as const)
+  ),
+  ...Object.values(assetsGenerated).flatMap((images) =>
+    images.map((image) => [image.src, image] as const)
+  ),
+]);
 
 /** Used for anything not yet measured, so a missing entry never breaks a page. */
 const FALLBACK_ASPECT = 3 / 2;
