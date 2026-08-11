@@ -14,7 +14,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const project = getWork(slug);
   if (!project) return {};
-  return { title: project.title, description: project.blurb };
+  return {
+    title: project.title,
+    description: project.blurb,
+    alternates: { canonical: `/work/${slug}` },
+    openGraph: { images: [project.poster.src] },
+    twitter: { images: [project.poster.src] },
+  };
 }
 
 export default async function ReelWarmProjectPage({ params }: Params) {

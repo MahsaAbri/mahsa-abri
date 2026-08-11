@@ -3,6 +3,12 @@
  * Change it here and it updates across the whole site.
  */
 
+/**
+ * The real domain, used for the sitemap and for link previews. Set
+ * NEXT_PUBLIC_SITE_URL to override it before going live on a different domain.
+ */
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mahsaabri.com";
+
 export const site = {
   name: "Mahsa Abri",
   /** The line under your name. Keep it short. */

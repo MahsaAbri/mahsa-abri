@@ -17,7 +17,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: post.cover ? { images: [post.cover.src] } : undefined,
+    twitter: post.cover ? { images: [post.cover.src] } : undefined,
+  };
 }
 
 export default async function ReelWarmPostPage({ params }: Params) {

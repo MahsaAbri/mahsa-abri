@@ -2,7 +2,11 @@ import { Media } from "@/components/Media";
 import { Prose } from "@/components/Prose";
 import { site } from "@/content/site";
 
-export const metadata = { title: "About" };
+export const metadata = {
+  title: "About",
+  description: site.tagline,
+  alternates: { canonical: "/about" },
+};
 
 export default function ReelWarmAboutPage() {
   return (

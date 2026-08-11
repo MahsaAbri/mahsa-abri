@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 
 import { Header } from "@/components/reel-warm/Header";
-import { site } from "@/content/site";
+import { site, siteUrl } from "@/content/site";
 
 import "./globals.css";
 
@@ -37,11 +37,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-/*
-  Set NEXT_PUBLIC_SITE_URL to the real domain before going live — it's what
-  link previews on social media and in messages are built from.
-*/
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mahsaabri.com";
+const defaultImage = { url: "/media/concept-art_poster.jpg", width: 2400, height: 1191 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -50,19 +46,28 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: site.tagline,
+  keywords: [site.name, site.role, "concept art", "illustration", "visual development"],
+  authors: [{ name: site.name }],
+  creator: site.name,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
+    url: "/",
     siteName: site.name,
     title: `${site.name} — ${site.role}`,
     description: site.tagline,
-    images: [{ url: "/art/lantern-sea/key-01.jpg", width: 1920, height: 1080 }],
+    images: [defaultImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — ${site.role}`,
     description: site.tagline,
-    images: ["/art/lantern-sea/key-01.jpg"],
+    images: [defaultImage.url],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f4efe6",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

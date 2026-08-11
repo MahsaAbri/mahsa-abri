@@ -3,7 +3,11 @@ import Link from "next/link";
 import { Media } from "@/components/Media";
 import { formatDate, orderedPosts } from "@/content/posts";
 
-export const metadata = { title: "Journal" };
+export const metadata = {
+  title: "Journal",
+  description: "Notes on the work — process, references and things learned along the way.",
+  alternates: { canonical: "/blog" },
+};
 
 export default function ReelWarmBlogPage() {
   return (

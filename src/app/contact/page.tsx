@@ -2,7 +2,11 @@ import { site } from "@/content/site";
 
 import { ContactForm } from "./ContactForm";
 
-export const metadata = { title: "Contact" };
+export const metadata = {
+  title: "Contact",
+  description: site.contact.intro,
+  alternates: { canonical: "/contact" },
+};
 
 export default function ReelWarmContactPage() {
   return (
