@@ -18,18 +18,32 @@ function frameWidth(media: MediaType, maxHeightVh: number) {
 }
 
 export function ReelWarmProject({ project, next }: { project: Work; next: Work }) {
-  const { open, lightbox } = useLightbox(project.images);
   // The Animation reel plays each clip as it scrolls into view, rather than
   // making visitors hover to see anything but a still frame.
   const autoplayVideos = project.slug === "animation";
+
+  // Animation opens with its first clip playing, rather than a still frame
+  // grabbed from it — so that clip is the hero, not also repeated below.
+  const heroVideo = autoplayVideos ? project.images[0] : undefined;
+  const heroMedia = heroVideo ?? project.poster;
+  const gridImages = heroVideo ? project.images.slice(1) : project.images;
+
+  const { open, lightbox } = useLightbox(gridImages);
 
   return (
     <>
       {/* Hero */}
       <div className="px-5 pt-28 sm:px-8 lg:px-10 lg:pt-32">
         {/* The picture itself is never animated in — it is the page. */}
-        <div className="mx-auto" style={{ width: frameWidth(project.poster, 72) }}>
-          <Media media={project.poster} sizes="100vw" priority className="w-full" />
+        <div className="mx-auto" style={{ width: frameWidth(heroMedia, 72) }}>
+          <Media
+            media={heroMedia}
+            sizes="100vw"
+            priority
+            autoPlay={!!heroVideo}
+            controls={!!heroVideo}
+            className="w-full"
+          />
         </div>
 
         <motion.div
@@ -37,7 +51,7 @@ export function ReelWarmProject({ project, next }: { project: Work; next: Work }
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           className="mx-auto mt-10"
-          style={{ width: frameWidth(project.poster, 72) }}
+          style={{ width: frameWidth(heroMedia, 72) }}
         >
           <h1 className="text-[clamp(2.2rem,5.5vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-[#2a251f]">
             {project.title}
@@ -52,7 +66,7 @@ export function ReelWarmProject({ project, next }: { project: Work; next: Work }
 
       {/* The work */}
       <div className="columns-1 gap-5 px-5 py-16 sm:px-8 md:columns-2 lg:columns-3 lg:gap-7 lg:px-10 lg:py-24">
-        {project.images.map((media, index) => (
+        {gridImages.map((media, index) => (
           <motion.figure
             key={media.src}
             initial={{ opacity: 0, y: 28 }}

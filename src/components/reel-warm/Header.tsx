@@ -2,10 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { useRef, useState } from "react";
 
 import { site } from "@/content/site";
+
+/** Scrolling past this many pixels is what lets the header start hiding — so it never
+ * disappears while the visitor is still right at the top of the page. */
+const HIDE_AFTER_PX = 80;
+/** How many pixels of scroll movement it takes to count as a deliberate up/down swipe,
+ * so tiny scroll jitter doesn't flicker the header. */
+const SCROLL_THRESHOLD_PX = 4;
 
 const NAV = [
   { label: "Work", href: "/" },
@@ -25,6 +32,23 @@ export function Header() {
     setOpen(false);
   }
 
+  // Hidden while scrolling down, back the moment the visitor scrolls up —
+  // and always visible with the menu open, so "Close" stays reachable. The
+  // landing page keeps the header pinned, since it's driven by its own
+  // horizontal-scroll gallery rather than a normal read down the page.
+  const isLanding = pathname === "/";
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+  const lastY = useRef(0);
+
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const delta = y - lastY.current;
+    if (y < HIDE_AFTER_PX) setHidden(false);
+    else if (delta > SCROLL_THRESHOLD_PX) setHidden(true);
+    else if (delta < -SCROLL_THRESHOLD_PX) setHidden(false);
+    lastY.current = y;
+  });
+
   const isActive = (href: string) =>
     href === "/"
       ? pathname === "/" || pathname.startsWith("/work")
@@ -32,8 +56,12 @@ export function Header() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-        <div className="pointer-events-auto flex items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
+      <motion.header
+        animate={{ y: !isLanding && hidden && !open ? "-100%" : "0%" }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none fixed inset-x-0 top-0 z-50"
+      >
+        <div className="pointer-events-auto flex items-center justify-between bg-[#f4efe6]/85 px-5 py-5 backdrop-blur-md sm:px-8 lg:px-10">
           <Link href="/" className="group flex items-baseline gap-3">
             <span className="text-[15px] font-medium tracking-[-0.02em] text-[#2a251f]">
               {site.name}
@@ -76,7 +104,7 @@ export function Header() {
             {open ? "Close" : "Menu"}
           </button>
         </div>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {open && (
