@@ -34,16 +34,20 @@ export const site = {
       alt: "Mahsa Abri",
     },
     /**
-     * ⚠️ PLACEHOLDER — replace this with your own words.
-     *
      * Blank lines separate paragraphs. The same formatting as `posts.ts` works
      * here too (## headings, > quotes, - lists, **bold**, links).
      */
-    body: `I'm a concept artist and illustrator. I work on environments, characters and visual development — the early part of a project, where a story is still deciding what it looks like.
+    body: `My artistic journey started with mural painting. I spent many years working on murals, learning how to work with large-scale spaces, color, and different traditional painting techniques. Working directly on walls taught me a lot about how images interact with their surroundings, and it became an important foundation for the way I see and make art today.
 
-I paint, and I draw from life whenever I can. Most of what ends up here started as something much rougher.
+Over time, I started exploring other media and visual approaches. I studied Graphic Design for my bachelor's degree and later earned my Master's degree in Illustration from the University of Art in Tehran. That experience changed the way I thought about images. Illustration became more than just making pictures—it became a way for me to explore ideas, tell stories, and build visual worlds.
 
-Available for freelance and commission work.`,
+As I worked on different projects, I also became increasingly interested in art history and visual culture. I started asking questions about where images come from, how they have changed over time, and what memories and stories they carry. This curiosity gradually became an important part of my practice: exploring the relationship between historical visual traditions and contemporary storytelling.
+
+I am especially drawn to mythology, folklore, literature, and the cultural memory of Iran. I see these traditions not simply as things from the past, but as living sources that can still inspire new ways of seeing and telling stories.
+
+This interest has also shaped my work on animation projects, particularly in Visual Development, Concept Art, environment design, and storyboarding. I enjoy finding connections between historical imagery and contemporary visual storytelling, and exploring how old stories and visual languages can take on new forms.
+
+For me, art has never been a straight or predetermined path. It is an ongoing process of learning, experimenting, discovering, and looking at things again from a different perspective.`,
   },
 
   contact: {

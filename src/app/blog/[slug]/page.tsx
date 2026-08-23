@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { Media } from "@/components/Media";
 import { Prose } from "@/components/Prose";
-import { formatDate, getPost, orderedPosts, posts } from "@/content/posts";
+import { getPost, orderedPosts, posts } from "@/content/posts";
 import { mediaInfo } from "@/lib/media";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -36,13 +36,13 @@ export default async function ReelWarmPostPage({ params }: Params) {
 
   return (
     <article>
-      <div className="px-5 pt-32 sm:px-8 lg:px-10 lg:pt-40">
+      <div className="mx-auto max-w-5xl px-5 pt-32 sm:px-8 lg:px-10 lg:pt-40">
         <PostHeading post={post} />
 
         {/* The cover is shown whole, with the heading above it rather than on it. */}
         {post.cover && (
           <div
-            className="mt-12"
+            className="mx-auto mt-12"
             style={{ width: `min(100%, ${(mediaInfo(post.cover).aspect * 62).toFixed(2)}vh)` }}
           >
             <Media media={post.cover} sizes="100vw" priority className="w-full" />
@@ -80,13 +80,8 @@ export default async function ReelWarmPostPage({ params }: Params) {
 
 function PostHeading({ post }: { post: NonNullable<ReturnType<typeof getPost>> }) {
   return (
-    <>
-      <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#b4472e]">
-        {formatDate(post.date)}
-      </p>
-      <h1 className="mt-4 max-w-4xl text-[clamp(2rem,5.5vw,4rem)] font-semibold leading-[1] tracking-[-0.04em] text-[#2a251f]">
-        {post.title}
-      </h1>
-    </>
+    <h1 className="max-w-4xl text-[clamp(2rem,5.5vw,4rem)] font-semibold leading-[1] tracking-[-0.04em] text-[#2a251f]">
+      {post.title}
+    </h1>
   );
 }

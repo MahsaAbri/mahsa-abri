@@ -31,6 +31,15 @@ export function HorizontalGallery({ projects }: { projects: Work[] }) {
 /** Frame height, in viewport units. Width follows from each picture's shape. */
 const FRAME_VH = 60;
 
+/**
+ * What's shown in a project's frame. Animation's poster is just a still, so
+ * its own first clip plays instead — every other project shows its poster.
+ */
+function tileMedia(project: Work) {
+  const first = project.images[0];
+  return project.slug === "animation" && first?.kind === "video" ? first : project.poster;
+}
+
 function Reel({ projects }: { projects: Work[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -75,31 +84,35 @@ function Reel({ projects }: { projects: Work[] }) {
             The title sits under the frame, never on it — the artwork is shown
             whole, with nothing washed over it.
           */}
-          {projects.map((project, i) => (
-            <Link
-              key={project.slug}
-              href={`/work/${project.slug}`}
-              className="group block shrink-0"
-              style={{ width: `${FRAME_VH * mediaInfo(project.poster).aspect}vh` }}
-            >
-              <div
-                className="relative overflow-hidden bg-[#2a251f]/[0.05]"
-                style={{ height: `${FRAME_VH}vh` }}
+          {projects.map((project, i) => {
+            const media = tileMedia(project);
+            return (
+              <Link
+                key={project.slug}
+                href={`/work/${project.slug}`}
+                className="group block shrink-0"
+                style={{ width: `${FRAME_VH * mediaInfo(media).aspect}vh` }}
               >
-                <Media
-                  media={project.poster}
-                  fill
-                  sizes="60vw"
-                  priority={i < 2}
-                  className="transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                />
-              </div>
+                <div
+                  className="relative overflow-hidden bg-[#2a251f]/[0.05]"
+                  style={{ height: `${FRAME_VH}vh` }}
+                >
+                  <Media
+                    media={media}
+                    fill
+                    sizes="60vw"
+                    priority={i < 2}
+                    autoPlayInView={media.kind === "video"}
+                    className="transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                  />
+                </div>
 
-              <h2 className="mt-5 text-[clamp(1.1rem,1.6vw,1.5rem)] font-medium leading-tight tracking-[-0.02em] text-[#2a251f]">
-                {project.title}
-              </h2>
-            </Link>
-          ))}
+                <h2 className="mt-5 text-[clamp(1.1rem,1.6vw,1.5rem)] font-medium leading-tight tracking-[-0.02em] text-[#2a251f]">
+                  {project.title}
+                </h2>
+              </Link>
+            );
+          })}
 
           <EndCard />
         </motion.div>
@@ -172,7 +185,13 @@ function Stack({ projects }: { projects: Work[] }) {
           >
             <Link href={`/work/${project.slug}`} className="group block">
               <div className="overflow-hidden">
-                <Media media={project.poster} sizes="100vw" priority={i === 0} className="w-full" />
+                <Media
+                  media={tileMedia(project)}
+                  sizes="100vw"
+                  priority={i === 0}
+                  autoPlayInView={tileMedia(project).kind === "video"}
+                  className="w-full"
+                />
               </div>
               <h2 className="mt-4 text-2xl font-medium tracking-[-0.02em] text-[#2a251f]">
                 {project.title}

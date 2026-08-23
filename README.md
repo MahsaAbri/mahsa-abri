@@ -121,11 +121,16 @@ To have messages arrive in your inbox instead, make a free form at
 
 ### Video
 
-Nothing on the site uses video yet, but it's supported. Put an `.mp4` in a
-project folder and it will be picked up like any other file — it plays quietly
-when hovered in a gallery, and with sound and controls when opened full screen.
-Keep clips under about 10 MB; for anything longer, put it on Vimeo and link to
-it from a blog post.
+Put an `.mp4` in a project folder and it's picked up like any other file —
+numbered the same way, appearing in that position in the gallery. It plays
+quietly when hovered, and with sound and controls when opened full screen or
+used as a project's hero (see Animation, and Sketches & Teaching).
+
+`npm run media` shrinks it and makes its poster frame automatically, the same
+way it shrinks a picture — but doing that needs
+[`ffmpeg`](https://ffmpeg.org) installed on your computer
+(`brew install ffmpeg` on a Mac). Without it, the command will tell you what's
+missing rather than fail quietly.
 
 ---
 

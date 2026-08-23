@@ -5,9 +5,6 @@ import type { Post } from "./types";
  *  THE BLOG
  * ─────────────────────────────────────────────────────────────────────────────
  *
- *  ⚠️ The three posts below are PLACEHOLDER writing, here so the blog isn't
- *  empty while the site is being reviewed. Replace them with your own.
- *
  *  To write a post, copy a block and change the words. Posts sort themselves
  *  newest-first from the date, so you can paste a new one anywhere.
  *
@@ -26,75 +23,103 @@ import type { Post } from "./types";
 
 export const posts: Post[] = [
   {
-    slug: "starting-rough",
-    title: "Starting rough",
-    date: "2026-07-18",
-    excerpt: "Why the first hour of a drawing should look nothing like the last one.",
-    cover: {
-      src: "/media/journal/01.jpg",
-      alt: "A lab group at a research showcase",
-    },
-    body: `Every piece I'm happy with started as something I wouldn't show anyone.
-
-The temptation is to go straight at the finished image — good paper, careful lines, the version you already have in your head. It produces exactly one idea, and by the time you've spent four hours on it you're committed to it whether it's working or not.
-
-## Small, fast, and a lot of them
-
-So I start with thumbnails. Small enough that a whole composition takes a minute, and loose enough that throwing one away costs nothing.
-
-Most of them are bad, and that's the point — you have to spend the obvious ideas before you get to the ones you didn't know you had.
-
-> The rough isn't a worse version of the final. It's where the decisions actually happen.
-
-Only when one of them keeps pulling my eye back do I scale it up, and only then does anything get careful.`,
-  },
-
-  {
-    slug: "light-first",
-    title: "Light first, everything else after",
-    date: "2026-05-02",
-    excerpt: "Deciding where the light comes from before deciding what's in the frame.",
+    slug: "raw-2025-shahnameh-ye-saba",
+    title: "Visual Characteristics and Cultural Reflections in the Illustrations of Shahnameh-ye Saba",
+    // ⚠️ Placeholder date — replace with when you actually presented at RAW 2025.
+    date: "2025-04-15",
+    excerpt:
+      "Presenting my research on a Qajar-era manuscript's visual language at RAW 2025, the graduate research conference at UT Dallas.",
     cover: {
       src: "/media/journal/02.jpg",
-      alt: "Presenting at a graduate research conference",
+      alt: "Presenting at RAW 2025, the Research, Art, and Writing graduate conference at UT Dallas",
     },
-    body: `I've stopped starting with objects. Where the light comes from, how strong it is and what colour it is decides nearly everything else — so it may as well be the first decision rather than the last.
+    body: `At RAW 2025 (Research, Art, Writing) at the University of Texas at Dallas, I presented my research on the visual language of Shahnameh-ye Saba, a nineteenth-century Persian manuscript from the Qajar period, held at the Malek National Library and Museum in Tehran.
 
-Once the light is fixed, a lot of questions answer themselves. Where the eye goes. Which shapes are allowed to be complicated and which have to stay simple. What time of day it feels like, and therefore what the picture is about.
+The manuscript I studied was written by Fath-Ali Khan Kashani, known as Saba, a court poet under Fath-Ali Shah Qajar. The work draws on Iran's long tradition of epic storytelling but adapts it to the political world of nineteenth-century Iran. It presents Fath-Ali Shah through the language of epic poetry, placing a contemporary ruler alongside the heroic figures of Iran's legendary past. At a time when the newly established Qajar dynasty was working to strengthen its authority, this connection between the present ruler and Iran's heroic past carried an important political meaning.
 
-## A useful test
+In my research, I closely examined the manuscript's illustrations, focusing on composition, color, character design, clothing, and the way historical scenes and figures were represented. I also compared the Malek manuscript with three other illustrated copies of Shahnameh-ye Saba: a manuscript in the National Library of Tabriz, one held by the British Library in London (IO Islamic 3442), and another in the Majles Library in Tehran (no. 1104).
 
-Squint at it. If the thing you want people to look at isn't the brightest or the darkest shape in the frame, it isn't going to work, and no amount of detail will rescue it.
+The comparison began with an observation I made while studying the Malek manuscript: although these manuscripts were created by different artists and at different times, their illustrations share a surprisingly similar visual language. The same types of compositions appear repeatedly, along with similar ways of enlarging the Shah, depicting his clothing and jewelry, and positioning him within the scene.
 
-![An environment painting](/media/concept-art/03.jpg)
+Seeing these similarities made me look beyond style and ask why the images were so closely connected. I began to see them as part of a deliberate visual approach to presenting Fath-Ali Shah as a powerful and legitimate ruler. The images were not simply illustrating the stories; they also shaped how the Shah was meant to be seen. What interested me most was how the text and images worked together. The poetry and paintings reinforced each other, creating a strong and consistent image of the king.
 
-The detail is the easy part. It's the last five percent, and it only ever helps a picture that already reads.`,
+Through this research, I explored how historical visual traditions can be adapted to tell new stories, shape ideas of power and identity, and give political meaning to images.`,
   },
 
   {
-    slug: "drawing-from-life",
-    title: "Drawing from life, even when the work isn't",
-    date: "2026-02-14",
-    excerpt: "Invented worlds are built out of things you've actually looked at.",
+    slug: "recreating-a-meiji-era-artifact",
+    title: "Recreating a Meiji-Era Artifact",
+    // ⚠️ Placeholder date — replace with when the Crow Museum project actually happened.
+    date: "2025-02-01",
+    excerpt:
+      "A collaboration with the Crow Museum of Asian Art, turning a small Meiji-era ceramic dog into a short animation.",
+    cover: {
+      src: "/media/journal/01.jpg",
+      alt: "Research and concept work for the Crow Museum of Asian Art artifact project",
+    },
+    body: `This was a collaborative project with the Crow Museum of Asian Art, focused on reimagining a Meiji-era Japanese artifact—a small ceramic dog associated with the Mingei tradition.
+
+Research was the starting point of the project. Before we began designing and building, we spent time learning about the artifact, its historical and cultural context, and the ideas connected to it. This research helped us develop the concept and visual direction with a deeper understanding, rather than simply recreating the artifact's appearance.
+
+From there, we translated our research into concept development, design, and production. We created a new narrative around the artifact, giving a small museum piece a chance to move and tell a story. The result was a short animation that brought the artifact into a new context and gave it a new way to experience.
+
+Throughout the process, our research directly informed the visual decisions we made—from design and textures to lighting, color, and the overall atmosphere of the piece. For me, this connection between research and making was one of the most interesting parts of the project: seeing how historical research could lead to a visual idea and eventually become a moving image.
+
+We presented the project as a group presentation at the Crow Museum of Asian Art, where we shared our research, the development of the concept, and the process of transforming a museum artifact into a contemporary visual narrative.
+
+This project was a valuable experience for me because it allowed me to explore something I have become increasingly interested in using research and historical sources as a starting point for contemporary visual storytelling.`,
+  },
+
+  {
+    slug: "shahanshahnama-yi-saba-manuscript",
+    title: "Visual Characteristics of Selected Illustrations from the Shahanshahnama-yi Saba",
+    // ⚠️ Placeholder date — replace with when this research was actually done.
+    date: "2024-11-01",
+    excerpt:
+      "Studying a Qajar-era manuscript at the Malek Library in Tehran, and what its illustrations reveal about images as tools of power.",
     cover: {
       src: "/media/journal/03.jpg",
-      alt: "A painted portrait with a cracked frame",
+      alt: "An illustration of Fath Ali Shah from the Shahanshahnama-yi Saba manuscript",
     },
-    body: `Almost nothing I paint exists. That's exactly why I draw things that do.
+    body: `For my graduate research in Illustration, I studied a Qajar-era Persian manuscript: the Shahanshahnama-yi Saba, an epic poem written about Fath Ali Shah Qajar, of which several illustrated manuscripts survive. I focused on manuscript no. 5998 at the Malek Library in Tehran, which contains 25 illustrations depicting battles, court ceremonies, and the victories of Fath Ali Shah.
 
-You can't invent convincingly from memory alone — you end up drawing the *idea* of a tree rather than a tree. Half an hour in front of a real one gives you the things you'd never have thought to make up: the way a branch thickens where it leaves the trunk, how much of it is dead, how little of it is symmetrical.
+Accessing this manuscript was itself part of the challenge. At the time, there was no independent study specifically focused on this manuscript. During the COVID-19 pandemic, despite the restrictions at the time, I personally went to the Malek Library and completed the necessary administrative process. In the end, I was not given permission to view the original manuscript directly and was only able to access images of the illustrations. These images became the main source for my analysis.
 
-## What I take from it
+As I studied the illustrations, what caught my attention most was the distinct visual identity of Qajar art—a recognizable style and visual language that appears clearly across the paintings of this period. Fath Ali Shah strongly supported the arts and literature, and much of the visual language of the time served the interests of its patrons, particularly the Shah and the court. In other words, alongside their aesthetic value, these works of art also functioned as a way of promoting and reinforcing the power of the ruling dynasty. This can be seen repeatedly and clearly in the surviving work from this period.
 
-- How things are built, not how they look
-- What weight looks like — how a heavy thing sits differently to a light one
-- Wear, damage and repair, which is where most of the character is
+It was this repetition of visual patterns that made me look at the illustrations differently: not simply as visual accounts of historical events, but as deliberate ways of constructing and reinforcing the image of a powerful king in the minds of viewers. My research explores this idea—how composition, color, and the placement of figures within an image can become tools of power, rather than simply decorative elements.
 
-> Reference isn't copying. It's the vocabulary you invent with.
+This question continues to be at the center of my interests as an artist and researcher: how images carry cultural memory, and how visual languages from the past can be revisited and used to tell new stories.
 
----
+Finally, based on what I learned through this research and the visual analysis I conducted, I developed the practical part of the project by selecting a story from Ferdowsi's Shahnameh and creating my own illustrations for it, drawing inspiration from the visual style and language of the Shahanshahnama-yi Saba.
 
-None of it appears directly. It just means that when I'm making something up, I'm making it out of things I've actually seen.`,
+## The practical project: Forud, Son of Siavash
+
+![](/media/thesis/01.jpg)
+
+![](/media/thesis/02.jpg)
+
+![](/media/thesis/03.jpg)
+
+![](/media/thesis/04.jpg)
+
+![](/media/thesis/05.jpg)
+
+![](/media/thesis/06.jpg)
+
+![](/media/thesis/07.jpg)
+
+![](/media/thesis/08.jpg)
+
+![](/media/thesis/09.jpg)
+
+![](/media/thesis/10.jpg)
+
+![](/media/thesis/11.jpg)
+
+![](/media/thesis/12.jpg)
+
+![](/media/thesis/13.jpg)`,
   },
 ];
 

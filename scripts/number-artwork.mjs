@@ -37,7 +37,7 @@ const dry = args.includes("--dry");
 const only = args.filter((a) => !a.startsWith("--"));
 
 /** The same list `npm run media` reads, so the two agree on what a picture is. */
-const IMAGE = /\.(jpe?g|png|webp|avif|tiff?|heic|heif|gif)$/i;
+const IMAGE = /\.(jpe?g|png|webp|avif|tiff?|heic|heif|gif|mp4|mov|webm)$/i;
 
 /** Sorts "img2" before "img10", the way a person would. */
 const naturally = new Intl.Collator("en", { numeric: true, sensitivity: "base" }).compare;

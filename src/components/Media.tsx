@@ -1,7 +1,7 @@
 "use client";
 
 import NextImage from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import type { Media as MediaType } from "@/content/types";
 import { mediaInfo } from "@/lib/media";
@@ -28,6 +28,8 @@ type Props = {
   playOnHover?: boolean;
   /** Plays the video immediately and keeps it looping — for the lightbox. */
   autoPlay?: boolean;
+  /** Plays while scrolled into view, pauses out of view — for a reel of clips. */
+  autoPlayInView?: boolean;
   /** Shows native controls. Lightbox only. */
   controls?: boolean;
 };
@@ -42,6 +44,7 @@ export function Media({
   className = "",
   playOnHover = false,
   autoPlay = false,
+  autoPlayInView = false,
   controls = false,
 }: Props) {
   const info = mediaInfo(media);
@@ -58,6 +61,7 @@ export function Media({
           fit={fit}
           playOnHover={playOnHover}
           autoPlay={autoPlay}
+          autoPlayInView={autoPlayInView}
           controls={controls}
         />
       ) : (
@@ -81,16 +85,17 @@ function VideoLayer({
   fit,
   playOnHover,
   autoPlay,
+  autoPlayInView,
   controls,
 }: {
   media: MediaType;
   fit: "cover" | "contain";
   playOnHover: boolean;
   autoPlay: boolean;
+  autoPlayInView: boolean;
   controls: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [ready, setReady] = useState(false);
 
   // Hover play has to be driven by hand: `autoPlay` can't be toggled, and
   // play() rejects if the element is torn down mid-promise.
@@ -99,6 +104,22 @@ function VideoLayer({
     if (!el || !autoPlay) return;
     el.play().catch(() => {});
   }, [autoPlay]);
+
+  // A clip only plays while it's actually on screen, so a whole reel of them
+  // doesn't all download and play back at once.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !autoPlayInView) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [autoPlayInView]);
 
   const start = () => {
     if (!playOnHover) return;
@@ -124,15 +145,12 @@ function VideoLayer({
         controls={controls}
         preload="metadata"
         aria-label={media.alt}
-        onLoadedData={() => setReady(true)}
         className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
       />
       {!controls && (
         <span
           aria-hidden
-          className={`pointer-events-none absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-sm transition-opacity duration-300 ${
-            ready ? "opacity-100" : "opacity-0"
-          }`}
+          className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-sm"
         >
           <svg viewBox="0 0 10 12" className="h-2.5 w-2.5 fill-current">
             <path d="M0 0v12l10-6z" />

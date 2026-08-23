@@ -22,8 +22,14 @@ import type { Media, Work } from "./types";
  *    is renamed 01, 02, 03…; after that, moving one is just renaming it —
  *    make it `01` to put it first, then run `npm run media` again.
  *
+ *  ADD A VIDEO
+ *    Put a `.mp4` in a project folder like any other picture — it gets a number
+ *    the same way, and appears in that position. `npm run media` needs `ffmpeg`
+ *    installed on your computer to shrink it and make its poster frame.
+ *
  *  This file is only for the words: what each project is called, the order they
- *  appear on the landing page, and an optional line of description.
+ *  appear on the landing page, an optional line of description, and (for
+ *  Animation) each clip's screen-reader description.
  */
 
 /**
@@ -38,9 +44,10 @@ const TITLES: Record<string, string> = {
   "the-parrot-and-the-merchant": "The Parrot and the Merchant",
   "nini-mina": "Nini Mina",
   thesis: "Thesis",
-  illustration: "Illustration",
-  mural: "Mural",
-  sketches: "Sketches",
+  illustration: "Illustrations",
+  mural: "Murals",
+  sketches: "Sketches & Teaching",
+  animation: "Animation",
 };
 
 /**
@@ -65,7 +72,43 @@ const ORDER = [
   "illustration",
   "mural",
   "sketches",
+  "animation",
 ];
+
+/**
+ * Screen-reader descriptions for individual pictures inside a project, by
+ * index — used for the Animation reel, so each clip is announced by its own
+ * name rather than a generic "image 3". Leave a project out and its pictures
+ * get the generic description.
+ */
+const CAPTIONS: Record<string, string[]> = {
+  animation: [
+    "Start Here",
+    "Solo Project 1",
+    "Solo Project 2",
+    "Solo Project 3",
+    "Solo Project 4",
+    "Solo Project 5",
+    "Solo Project 6",
+    "Solo Project 7",
+    "Solo Project 8",
+    "Solo Project 9",
+    "Solo Project 10",
+    "Solo Project 11",
+    "Group Project — BeanSquad",
+    "Group Project — Peanut",
+  ],
+};
+
+/**
+ * A longer writeup shown on a project's own page, under its hero. Same
+ * formatting as a blog post — see `posts.ts`.
+ */
+const BODY: Record<string, string> = {
+  sketches: `Throughout my drawing and painting classes, I guided students through a range of techniques, walking them step by step through the creative process. I documented much of this through photos and videos and occasionally put together short instructional clips to explain concepts further, help students work through specific challenges, or demonstrate techniques in more depth. My teaching covered a range of mediums — oil painting, soft pastel, charcoal, colored pencil, and watercolor.
+
+This video captures a glimpse of that teaching experience.`,
+};
 
 // ── nothing below here needs editing ────────────────────────────────────────
 
@@ -77,14 +120,19 @@ function titleFor(slug: string, folder: string) {
 export const work: Work[] = generated
   .map((project): Work => {
     const title = titleFor(project.slug, project.folder);
+    const captions = CAPTIONS[project.slug];
     return {
       slug: project.slug,
       title,
       blurb: BLURBS[project.slug],
+      body: BODY[project.slug],
       poster: { src: project.poster.src, alt: title },
-      images: project.images.map(
-        (image, i): Media => ({ src: image.src, alt: `${title} — image ${i + 1}` })
-      ),
+      images: project.images.map((image, i): Media => ({
+        src: image.src,
+        alt: captions?.[i] ?? `${title} — image ${i + 1}`,
+        kind: image.kind === "video" ? "video" : undefined,
+        poster: image.poster,
+      })),
     };
   })
   .sort((a, b) => {

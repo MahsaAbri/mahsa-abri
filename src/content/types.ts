@@ -28,6 +28,8 @@ export type Work = {
   poster: Media;
   /** Everything inside the project's folder. */
   images: Media[];
+  /** Optional longer writeup, shown on the project page. Same formatting as `posts.ts`. */
+  body?: string;
 };
 
 export type Post = {

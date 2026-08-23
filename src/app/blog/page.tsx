@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Media } from "@/components/Media";
-import { formatDate, orderedPosts } from "@/content/posts";
+import { orderedPosts } from "@/content/posts";
 
 export const metadata = {
   title: "Journal",
@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function ReelWarmBlogPage() {
   return (
-    <div className="px-5 pb-24 pt-32 sm:px-8 lg:px-10 lg:pt-40">
+    <div className="mx-auto max-w-4xl px-5 pb-24 pt-32 sm:px-8 lg:px-10 lg:pt-40">
       <h1 className="text-[clamp(2.4rem,6vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-[#2a251f]">
         Journal
       </h1>
@@ -25,11 +25,8 @@ export default function ReelWarmBlogPage() {
                   <h2 className="text-[clamp(1.4rem,3vw,2.2rem)] font-medium leading-tight tracking-[-0.03em] text-[#3f3930] transition-colors duration-500 group-hover:text-[#2a251f]">
                     {post.title}
                   </h2>
-                  <p className="mt-2.5 max-w-xl text-[15px] leading-relaxed text-[#8a7f70]">
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-[#8a7f70]">
                     {post.excerpt}
-                  </p>
-                  <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#a89a86]">
-                    {formatDate(post.date)}
                   </p>
                 </div>
 

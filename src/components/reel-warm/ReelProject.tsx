@@ -19,6 +19,9 @@ function frameWidth(media: MediaType, maxHeightVh: number) {
 
 export function ReelWarmProject({ project, next }: { project: Work; next: Work }) {
   const { open, lightbox } = useLightbox(project.images);
+  // The Animation reel plays each clip as it scrolls into view, rather than
+  // making visitors hover to see anything but a still frame.
+  const autoplayVideos = project.slug === "animation";
 
   return (
     <>
@@ -67,7 +70,8 @@ export function ReelWarmProject({ project, next }: { project: Work; next: Work }
                 <Media
                   media={media}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  playOnHover
+                  playOnHover={!autoplayVideos}
+                  autoPlayInView={autoplayVideos}
                   priority={index < 3}
                   className="w-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
                 />

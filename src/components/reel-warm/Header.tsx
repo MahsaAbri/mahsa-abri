@@ -10,7 +10,7 @@ import { site } from "@/content/site";
 const NAV = [
   { label: "Work", href: "/" },
   { label: "Journal", href: "/blog" },
-  { label: "About", href: "/about" },
+  { label: "About Me", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
