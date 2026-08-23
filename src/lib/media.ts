@@ -11,13 +11,20 @@ import type { Media } from "@/content/types";
  * no poster (`assets.generated.json` — the About picture, a blog cover…) are
  * both included, so either kind can be measured the same way.
  */
-const measurements = new Map([
-  ...generated.flatMap((project) =>
-    [project.poster, ...project.images].map((image) => [image.src, image] as const)
-  ),
-  ...Object.values(assetsGenerated).flatMap((images) =>
-    images.map((image) => [image.src, image] as const)
-  ),
+type Measured = { src: string; width: number; height: number; blurDataURL?: string; poster?: string };
+
+/**
+ * A video's own entry carries its poster frame's width/height, but under the
+ * video's `src` — also index it under the poster's own path, since that's
+ * what a video looks itself up by (see `mediaInfo` below).
+ */
+function keysFor(image: Measured): Array<readonly [string, Measured]> {
+  return image.poster ? [[image.src, image], [image.poster, image]] : [[image.src, image]];
+}
+
+const measurements = new Map<string, Measured>([
+  ...generated.flatMap((project) => [project.poster, ...project.images].flatMap(keysFor)),
+  ...Object.values(assetsGenerated).flatMap((images) => images.flatMap(keysFor)),
 ]);
 
 /** Used for anything not yet measured, so a missing entry never breaks a page. */

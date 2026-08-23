@@ -19,6 +19,14 @@ function frameWidth(media: MediaType, maxHeightVh: number) {
   return `min(100%, ${(mediaInfo(media).aspect * maxHeightVh).toFixed(2)}vh)`;
 }
 
+/**
+ * How tall the teaching video is allowed to get, as a percentage of the
+ * screen's height — the video is portrait, so on a wide screen it would
+ * otherwise grow tall enough to need scrolling to see all of it. Raise this
+ * number for a bigger video, lower it for a smaller one.
+ */
+const TEACHING_VIDEO_MAX_HEIGHT_VH = 55;
+
 export function TeachingProject({ project, next }: { project: Work; next: Work }) {
   const video = project.images.find((media) => media.kind === "video");
   const gallery = project.images.filter((media) => media.kind !== "video");
@@ -37,18 +45,20 @@ export function TeachingProject({ project, next }: { project: Work; next: Work }
           {project.title}
         </motion.h1>
 
-        <div className="mt-10 lg:grid lg:grid-cols-[1.3fr_1fr] lg:items-start lg:gap-14">
+        <div className="mt-10 lg:flex lg:items-start lg:justify-center lg:gap-14">
           {video && (
             <motion.div
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-              className="overflow-hidden bg-[#2a251f]/[0.05]"
+              className="overflow-hidden bg-[#2a251f]/[0.05] lg:flex-shrink-0"
+              style={{ width: frameWidth(video, TEACHING_VIDEO_MAX_HEIGHT_VH) }}
             >
               <Media
                 media={video}
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 controls
+                autoPlay
                 priority
                 className="w-full"
               />
@@ -60,7 +70,7 @@ export function TeachingProject({ project, next }: { project: Work; next: Work }
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-              className="mt-10 lg:mt-0"
+              className="mt-10 max-w-prose lg:mt-0"
             >
               <Prose text={project.body} />
             </motion.div>

@@ -54,7 +54,7 @@ Through this research, I explored how historical visual traditions can be adapte
     excerpt:
       "A collaboration with the Crow Museum of Asian Art, turning a small Meiji-era ceramic dog into a short animation.",
     cover: {
-      src: "/media/journal/01.jpg",
+      src: "/media/journal/03.jpg",
       alt: "Research and concept work for the Crow Museum of Asian Art artifact project",
     },
     body: `This was a collaborative project with the Crow Museum of Asian Art, focused on reimagining a Meiji-era Japanese artifact—a small ceramic dog associated with the Mingei tradition.
@@ -78,7 +78,7 @@ This project was a valuable experience for me because it allowed me to explore s
     excerpt:
       "Studying a Qajar-era manuscript at the Malek Library in Tehran, and what its illustrations reveal about images as tools of power.",
     cover: {
-      src: "/media/journal/03.jpg",
+      src: "/media/journal/01.jpg",
       alt: "An illustration of Fath Ali Shah from the Shahanshahnama-yi Saba manuscript",
     },
     body: `For my graduate research in Illustration, I studied a Qajar-era Persian manuscript: the Shahanshahnama-yi Saba, an epic poem written about Fath Ali Shah Qajar, of which several illustrated manuscripts survive. I focused on manuscript no. 5998 at the Malek Library in Tehran, which contains 25 illustrations depicting battles, court ceremonies, and the victories of Fath Ali Shah.

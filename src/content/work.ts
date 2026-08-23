@@ -43,7 +43,6 @@ const TITLES: Record<string, string> = {
   "concept-art": "Concept Art",
   "the-parrot-and-the-merchant": "The Parrot and the Merchant",
   "nini-mina": "Nini Mina",
-  thesis: "Thesis",
   illustration: "Illustrations",
   mural: "Murals",
   sketches: "Sketches & Teaching",
@@ -68,11 +67,10 @@ const ORDER = [
   "concept-art",
   "the-parrot-and-the-merchant",
   "nini-mina",
-  "thesis",
   "illustration",
-  "mural",
-  "sketches",
   "animation",
+  "sketches",
+  "mural",
 ];
 
 /**
