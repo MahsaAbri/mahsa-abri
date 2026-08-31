@@ -100,6 +100,8 @@ Finally, based on what I learned through this research and the visual analysis I
 
 ## The practical project: Forud, Son of Siavash
 
+![](/media/thesis/faroud.mp4)
+
 ![](/media/thesis/01.jpg)
 
 ![](/media/thesis/02.jpg)
@@ -124,11 +126,7 @@ Finally, based on what I learned through this research and the visual analysis I
 
 ![](/media/thesis/12.jpg)
 
-![](/media/thesis/13.jpg)
-
-A short animated sequence developed alongside these illustrations, following Forud on his journey.
-
-![](/media/thesis/faroud.mp4)`,
+![](/media/thesis/13.jpg)`,
   },
 
   {

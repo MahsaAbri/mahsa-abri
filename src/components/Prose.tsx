@@ -38,6 +38,8 @@ function renderBlocks(text: string): ReactNode[] {
             media={{ src, alt: image[1], poster: isVideo ? posterFor(src) : undefined }}
             sizes="(max-width: 900px) 100vw, 820px"
             fit="cover"
+            autoPlay={isVideo}
+            controls={isVideo}
           />
           {image[1] && <figcaption>{image[1]}</figcaption>}
         </figure>
