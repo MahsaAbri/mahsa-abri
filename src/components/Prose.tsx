@@ -1,6 +1,7 @@
 import { Fragment, type ReactNode } from "react";
 
 import { Media } from "@/components/Media";
+import { posterFor } from "@/lib/media";
 
 /**
  * Renders the small set of formatting marks documented in `posts.ts`.
@@ -29,10 +30,12 @@ function renderBlocks(text: string): ReactNode[] {
 
     const image = block.match(IMAGE_LINE);
     if (image) {
+      const src = image[2];
+      const isVideo = /\.(mp4|webm)$/i.test(src);
       return (
         <figure key={key}>
           <Media
-            media={{ src: image[2], alt: image[1] }}
+            media={{ src, alt: image[1], poster: isVideo ? posterFor(src) : undefined }}
             sizes="(max-width: 900px) 100vw, 820px"
             fit="cover"
           />

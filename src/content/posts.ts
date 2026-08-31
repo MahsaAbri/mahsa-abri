@@ -17,6 +17,11 @@ import type { Post } from "./types";
  *     ![description of the picture](/media/thesis/01.jpg)
  *     ---                                (a divider line)
  *
+ *  A `.mp4` works the same way as a picture — its poster frame is found
+ *  automatically:
+ *
+ *     ![description of the clip](/media/thesis/faroud.mp4)
+ *
  *  Inside a paragraph: **bold**, *italic*, [link text](https://example.com).
  *  That's the whole list.
  */
@@ -57,13 +62,13 @@ Through this research, I explored how historical visual traditions can be adapte
       src: "/media/journal/03.jpg",
       alt: "Research and concept work for the Crow Museum of Asian Art artifact project",
     },
-    body: `This was a collaborative project with the Crow Museum of Asian Art, focused on reimagining a Meiji-era Japanese artifact—a small ceramic dog associated with the Mingei tradition.
+    body: `This was a collaborative project with the Crow Museum of Asian Art, focused on reimagining a Meiji-era Japanese artifact: a small ceramic dog associated with the Mingei tradition.
 
 Research was the starting point of the project. Before we began designing and building, we spent time learning about the artifact, its historical and cultural context, and the ideas connected to it. This research helped us develop the concept and visual direction with a deeper understanding, rather than simply recreating the artifact's appearance.
 
 From there, we translated our research into concept development, design, and production. We created a new narrative around the artifact, giving a small museum piece a chance to move and tell a story. The result was a short animation that brought the artifact into a new context and gave it a new way to experience.
 
-Throughout the process, our research directly informed the visual decisions we made—from design and textures to lighting, color, and the overall atmosphere of the piece. For me, this connection between research and making was one of the most interesting parts of the project: seeing how historical research could lead to a visual idea and eventually become a moving image.
+Throughout the process, our research directly informed the visual decisions we made, from design and textures to lighting, color, and the overall atmosphere of the piece. For me, this connection between research and making was one of the most interesting parts of the project: seeing how historical research could lead to a visual idea and eventually become a moving image.
 
 We presented the project as a group presentation at the Crow Museum of Asian Art, where we shared our research, the development of the concept, and the process of transforming a museum artifact into a contemporary visual narrative.
 
@@ -85,9 +90,9 @@ This project was a valuable experience for me because it allowed me to explore s
 
 Accessing this manuscript was itself part of the challenge. At the time, there was no independent study specifically focused on this manuscript. During the COVID-19 pandemic, despite the restrictions at the time, I personally went to the Malek Library and completed the necessary administrative process. In the end, I was not given permission to view the original manuscript directly and was only able to access images of the illustrations. These images became the main source for my analysis.
 
-As I studied the illustrations, what caught my attention most was the distinct visual identity of Qajar art—a recognizable style and visual language that appears clearly across the paintings of this period. Fath Ali Shah strongly supported the arts and literature, and much of the visual language of the time served the interests of its patrons, particularly the Shah and the court. In other words, alongside their aesthetic value, these works of art also functioned as a way of promoting and reinforcing the power of the ruling dynasty. This can be seen repeatedly and clearly in the surviving work from this period.
+As I studied the illustrations, what caught my attention most was the distinct visual identity of Qajar art: a recognizable style and visual language that appears clearly across the paintings of this period. Fath Ali Shah strongly supported the arts and literature, and much of the visual language of the time served the interests of its patrons, particularly the Shah and the court. In other words, alongside their aesthetic value, these works of art also functioned as a way of promoting and reinforcing the power of the ruling dynasty. This can be seen repeatedly and clearly in the surviving work from this period.
 
-It was this repetition of visual patterns that made me look at the illustrations differently: not simply as visual accounts of historical events, but as deliberate ways of constructing and reinforcing the image of a powerful king in the minds of viewers. My research explores this idea—how composition, color, and the placement of figures within an image can become tools of power, rather than simply decorative elements.
+It was this repetition of visual patterns that made me look at the illustrations differently: not simply as visual accounts of historical events, but as deliberate ways of constructing and reinforcing the image of a powerful king in the minds of viewers. My research explores this idea: how composition, color, and the placement of figures within an image can become tools of power, rather than simply decorative elements.
 
 This question continues to be at the center of my interests as an artist and researcher: how images carry cultural memory, and how visual languages from the past can be revisited and used to tell new stories.
 
@@ -119,7 +124,65 @@ Finally, based on what I learned through this research and the visual analysis I
 
 ![](/media/thesis/12.jpg)
 
-![](/media/thesis/13.jpg)`,
+![](/media/thesis/13.jpg)
+
+A short animated sequence developed alongside these illustrations, following Forud on his journey.
+
+![](/media/thesis/faroud.mp4)`,
+  },
+
+  {
+    slug: "anushirvan-and-the-wise-old-man",
+    title: "The Tale of King Anushirvan and the Wise Old Man",
+    // ⚠️ Placeholder date — replace with when this project actually began.
+    date: "2025-09-01",
+    excerpt:
+      "An independent research project on the history and material culture of Sasanian Iran, starting from a Persian story about wisdom, justice, and planting for a future you won't see.",
+    cover: {
+      src: "/media/sasanian/medallion.jpg",
+      alt: "A Sasanian-era silver medallion depicting a crowned king",
+    },
+    body: `This independent project began with a Persian story I grew up hearing about King Anushirvan and an old man who plants a tree for future generations. The story speaks about wisdom, justice, responsibility, and the relationship between generations. I use it as a starting point for exploring the history, visual culture, and material world of Sasanian Iran.
+
+I am interested not only in the story itself, but also in how historical figures such as Anushirvan were remembered and reimagined through Persian literature and storytelling. Rather than treating the tale as a direct historical record, I am exploring the cultural values and ideas that shaped the image of Anushirvan as a wise and just ruler.
+
+My research focuses on the visual and material culture of the Sasanian period. I am studying archaeological evidence, museum collections, historical sources, architecture, landscapes, royal imagery, textiles, ceramics, coins, clothing, and other material objects. I pay particular attention to materials, patterns, motifs, colors, and visual details that can help me understand the environments and social worlds of the period.
+
+A central part of this project is exploring how historical research can inform contemporary visual storytelling. I use what I learn about Sasanian architecture, clothing, objects, landscapes, and social life as a foundation for developing characters and environments for the story. At the same time, I distinguish between documented historical evidence, scholarly interpretation, and artistic imagination.
+
+My interest in this project also comes from my long-standing connection to Iranian folktales and oral storytelling. I am fascinated by how stories survive across generations, change through retelling, and become part of cultural memory. Through drawing and visual experiments, I am exploring how these narratives can be researched, preserved, and reimagined through contemporary image-making.
+
+As the project develops, my goal is to transform research and visual experiments into a children's storybook. I hope to create a work that introduces audiences to the cultural and visual world of Sasanian Iran while demonstrating how historical research, storytelling, and contemporary visual practice can come together to keep cultural heritage alive.
+
+## Visual research
+
+![](/media/sasanian/1.jpg)
+
+![](/media/sasanian/2.jpg)
+
+![](/media/sasanian/3.jpg)
+
+![](/media/sasanian/4.jpg)
+
+![](/media/sasanian/5.jpg)
+
+![](/media/sasanian/6.jpg)
+
+![](/media/sasanian/7.jpg)
+
+![](/media/sasanian/8.jpg)
+
+![](/media/sasanian/9.jpg)
+
+![](/media/sasanian/10.jpg)
+
+![](/media/sasanian/11.jpg)
+
+![](/media/sasanian/12.jpg)
+
+## Storyboard: planting the tree
+
+![](/media/sasanian/storyboard.jpg)`,
   },
 ];
 

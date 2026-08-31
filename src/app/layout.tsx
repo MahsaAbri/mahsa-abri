@@ -42,8 +42,8 @@ const defaultImage = { url: "/media/concept-art_poster.jpg", width: 2400, height
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.name} — ${site.role}`,
-    template: `%s — ${site.name}`,
+    default: `${site.name} - ${site.role}`,
+    template: `%s - ${site.name}`,
   },
   description: site.tagline,
   keywords: [site.name, site.role, "concept art", "illustration", "visual development"],
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: site.name,
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} - ${site.role}`,
     description: site.tagline,
     images: [defaultImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} - ${site.role}`,
     description: site.tagline,
     images: [defaultImage.url],
   },

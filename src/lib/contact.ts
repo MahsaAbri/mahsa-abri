@@ -28,7 +28,7 @@ export function useContactForm() {
 
     if (!endpoint) {
       const subject = encodeURIComponent(`Enquiry from ${name || "your website"}`);
-      const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+      const body = encodeURIComponent(`${message}\n\nFrom: ${name}\n${email}`);
       window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
       setState("sent");
       return;

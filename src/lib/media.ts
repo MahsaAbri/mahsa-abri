@@ -64,3 +64,8 @@ export function mediaInfo(media: Media): MediaInfo {
 export function isLandscape(media: Media) {
   return mediaInfo(media).aspect >= 1.15;
 }
+
+/** A processed video's own poster frame, found by its `.mp4`/`.webm` path — for embedding one in a blog post, where there's no `Media` object to carry it explicitly. */
+export function posterFor(src: string): string | undefined {
+  return measurements.get(src)?.poster;
+}

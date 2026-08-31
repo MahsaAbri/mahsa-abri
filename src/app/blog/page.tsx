@@ -5,7 +5,7 @@ import { orderedPosts } from "@/content/posts";
 
 export const metadata = {
   title: "Journal",
-  description: "Notes on the work — process, references and things learned along the way.",
+  description: "Notes on the work: process, references, and things learned along the way.",
   alternates: { canonical: "/blog" },
 };
 

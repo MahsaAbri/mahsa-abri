@@ -39,7 +39,7 @@ export const site = {
      */
     body: `My artistic journey started with mural painting. I spent many years working on murals, learning how to work with large-scale spaces, color, and different traditional painting techniques. Working directly on walls taught me a lot about how images interact with their surroundings, and it became an important foundation for the way I see and make art today.
 
-Over time, I started exploring other media and visual approaches. I studied Graphic Design for my bachelor's degree and later earned my Master's degree in Illustration from the University of Art in Tehran. That experience changed the way I thought about images. Illustration became more than just making pictures—it became a way for me to explore ideas, tell stories, and build visual worlds.
+Over time, I started exploring other media and visual approaches. I studied Graphic Design for my bachelor's degree and later earned my Master's degree in Illustration from the University of Art in Tehran. That experience changed the way I thought about images. Illustration became more than just making pictures. It became a way for me to explore ideas, tell stories, and build visual worlds.
 
 As I worked on different projects, I also became increasingly interested in art history and visual culture. I started asking questions about where images come from, how they have changed over time, and what memories and stories they carry. This curiosity gradually became an important part of my practice: exploring the relationship between historical visual traditions and contemporary storytelling.
 
@@ -52,7 +52,7 @@ For me, art has never been a straight or predetermined path. It is an ongoing pr
 
   contact: {
     /** ⚠️ PLACEHOLDER — replace with your own words. */
-    intro: "For commissions, freelance work, or anything else — write to me.",
+    intro: "For commissions, freelance work, or anything else, write to me.",
     /**
      * The form sends messages here using Formspree (free).
      * Sign up at formspree.io, make a form, paste its address in.

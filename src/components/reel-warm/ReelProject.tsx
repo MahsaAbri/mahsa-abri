@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 
 import { Media } from "@/components/Media";
 import { useLightbox } from "@/components/Lightbox";
+import { Prose } from "@/components/Prose";
 import type { Media as MediaType, Work } from "@/content/types";
 import { mediaInfo } from "@/lib/media";
 
@@ -63,6 +64,12 @@ export function ReelWarmProject({ project, next }: { project: Work; next: Work }
           )}
         </motion.div>
       </div>
+
+      {project.body && (
+        <div className="mx-auto max-w-[44rem] px-5 py-16 sm:px-8 lg:py-24">
+          <Prose text={project.body} />
+        </div>
+      )}
 
       {/* The work */}
       <div className="columns-1 gap-5 px-5 py-16 sm:px-8 md:columns-2 lg:columns-3 lg:gap-7 lg:px-10 lg:py-24">

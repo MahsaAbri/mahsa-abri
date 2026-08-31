@@ -93,8 +93,8 @@ const CAPTIONS: Record<string, string[]> = {
     "Solo Project 9",
     "Solo Project 10",
     "Solo Project 11",
-    "Group Project — BeanSquad",
-    "Group Project — Peanut",
+    "Group Project: BeanSquad",
+    "Group Project: Peanut",
   ],
 };
 
@@ -103,9 +103,21 @@ const CAPTIONS: Record<string, string[]> = {
  * formatting as a blog post — see `posts.ts`.
  */
 const BODY: Record<string, string> = {
-  sketches: `Throughout my drawing and painting classes, I guided students through a range of techniques, walking them step by step through the creative process. I documented much of this through photos and videos and occasionally put together short instructional clips to explain concepts further, help students work through specific challenges, or demonstrate techniques in more depth. My teaching covered a range of mediums — oil painting, soft pastel, charcoal, colored pencil, and watercolor.
+  sketches: `Throughout my drawing and painting classes, I guided students through a range of techniques, walking them step by step through the creative process. I documented much of this through photos and videos and occasionally put together short instructional clips to explain concepts further, help students work through specific challenges, or demonstrate techniques in more depth. My teaching covered a range of mediums: oil painting, soft pastel, charcoal, colored pencil, and watercolor.
 
 This video captures a glimpse of that teaching experience.`,
+
+  "the-parrot-and-the-merchant": `This project is a visual development project for an animation concept based on "The Story of the Merchant and the Parrot," a well-known allegorical story from Rumi's Masnavi, written in the thirteenth century. It follows a caged parrot who receives a message from the free parrots of India and eventually escapes by pretending to be dead. Through this didactic poem, Rumi explores freedom, transformation, and the search for deeper meaning.
+
+Literature has long played an important role in Iranian culture, carrying knowledge, experience, and cultural values through poetry, storytelling, and oral traditions. What interests me about this story is how complex ideas such as freedom are communicated through a simple narrative, using metaphor, character, and transformation. Because of my cultural background, I have always been interested in how stories and poetry preserve ideas across generations, particularly through the long relationship between image and text in Iranian culture and illustrated manuscripts.
+
+I approached this project as a visual research project, exploring how historical stories and cultural traditions can inform contemporary artistic practice. My research included Iranian art and architecture, traditional clothing and jewelry, carpets, everyday objects, courtyard pools, and poshti (traditional cushions and backrests used in Iranian homes). I studied these elements as part of the cultural and visual context of the story rather than simply as decoration.
+
+In my conceptual designs, I combined traditional references with contemporary elements. For example, I imagined the merchant travelling to India by airplane rather than using historical transportation. This contrast allowed me to explore how cultural references can exist within new visual contexts and how stories from the past can be reinterpreted through contemporary images and media.
+
+The designs are not intended to represent one specific historical period or region of Iran. Instead, I brought together references from different cultural and historical contexts to create a diverse visual world. My aim was not to reconstruct the past with complete historical accuracy, but to use research as a foundation for developing a contemporary visual language, incorporating forms, materials, patterns, architectural details, and everyday objects into my interpretation of the story.
+
+Through this project, I became increasingly interested in how traditional cultural elements can continue to exist within contemporary visual culture. More broadly, it reflects my interest in folklore, art history, literature, and visual culture from different parts of the world, and in finding contemporary ways to reinterpret and preserve them while retaining their cultural meaning and emotional depth.`,
 };
 
 // ── nothing below here needs editing ────────────────────────────────────────
@@ -127,7 +139,7 @@ export const work: Work[] = generated
       poster: { src: project.poster.src, alt: title },
       images: project.images.map((image, i): Media => ({
         src: image.src,
-        alt: captions?.[i] ?? `${title} — image ${i + 1}`,
+        alt: captions?.[i] ?? `${title} (image ${i + 1})`,
         kind: image.kind === "video" ? "video" : undefined,
         poster: image.poster,
       })),

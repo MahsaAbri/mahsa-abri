@@ -59,7 +59,7 @@ export function ContactForm() {
 
         {state === "sent" && (
           <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#b4472e]">
-            {usesMailto ? "Opening your email app…" : "Received — I'll reply shortly."}
+            {usesMailto ? "Opening your email app…" : "Received. I'll reply shortly."}
           </p>
         )}
         {state === "error" && (
